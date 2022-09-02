@@ -1,0 +1,49 @@
+<meta>
+    <info author="ROMCIS - ARABNIGHT MTA Server" type="script" description="Account System" />
+    
+    <script src="login-panel/s_romcis-login.lua" type="server" />
+    <script src="login-panel/c_romcis-login.lua" type="client" cache="false" />
+    <script src="login-panel/g_romcis-login.lua" type="shared" cache="false"/>
+
+    <file src="login-panel/fonts/sst_arabic.ttf"/>
+    <file src="login-panel/imgs/background.png"/>
+    <file src="login-panel/imgs/logo.png"/>
+
+    <script src="g_events.lua" type="server" />
+    <script src="g_events.lua" type="client" cache="false" />
+    
+    <script src="s_main.lua" type="server" />
+    <script src="c_main.lua" type="client" cache="false" />
+    <export function="loadSavedData" type="client" cache="false" />
+    <export function="appendSavedData" type="client" cache="false" />
+    
+    <script src="s_characters.lua" type="server" />
+    <script src="c_characters.lua" type="client" cache="false" />
+    
+    <script src="s_login.lua" type="server" />
+    <script src="c_login.lua" type="client" cache="false" />
+    
+    <script src="s_email_request.lua" type="server" />
+    <script src="c_email_request.lua" type="client" cache="false" />
+    
+    <script src="c_create_character.lua" type="client" cache="false" />
+    <script src="s_create_character.lua" type="server" />
+    
+    <script src="c_options.lua" type="client" cache="false" />
+    
+    <script src="c_update.lua" type="client" cache="false" />
+	
+	<script src="f10-settings\c_f10_settings.lua" type="client" cache="false" />
+	<script src="f10-settings\s_f10_settings.lua" type="server" />
+	
+	<script src="rules_apps/server_rules_s.lua" type="server" />
+    <script src="rules_apps/server_rules_c.lua" type="client" cache="false" />
+	
+    <script src="s_news.lua" type="server" />
+	
+    <export function="checkValidCharacterName" type="client" cache="false" />
+	<export function="checkValidCharacterName" type="server" />
+	
+    <file src="fonts/Samim-Bold.ttf" />	
+    <min_mta_version client="1.3.0-9.04464"></min_mta_version>
+</meta>
