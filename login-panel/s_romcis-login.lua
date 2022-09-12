@@ -78,7 +78,7 @@ exports["notices"]:addNotification(source,"إسم الحساب أو كلمة ا�
 
 	--Validation is done, fetching some more details
 	exports["notices"]:addNotification(source,"تم تسجيل الدخول بنجاح",'success');
-	restartResource(getResourceFromName("scoreboard"))
+
 	-- Check the account is already logged in
 	local found = false
 	for _, thePlayer in ipairs(exports.pool:getPoolElementsByType("player")) do
@@ -100,7 +100,6 @@ exports["notices"]:addNotification(source,"إسم الحساب أو كلمة ا�
 	setElementDataEx(client, "account:id", tonumber(accountData["id"]), true)
 	setElementDataEx(client, "account:username", accountData["username"], true)
 	setElementDataEx(client, "electionsvoted", accountData["electionsvoted"], true)
-	setElementDataEx(client, "romcis:avatar", accountData["avatar"], true)
 
 	--STAFF PERMISSIONS / MAXIME
 	setElementDataEx(client, "admin_level", tonumber(accountData['admin']), true)
@@ -195,7 +194,7 @@ exports["notices"]:addNotification(source,"إسم الحساب أو كلمة ا�
 	triggerClientEvent(client, "accounts:login:attempt", client, 0 )
 	triggerEvent( "social:account", client, tonumber( accountData.id ) )
 	triggerClientEvent (client,"hideLoginWindow",client)
-
+	
 	triggerEvent("account:onPlayerLogin", client);
 end
 addEvent("accounts:login:attempt",true)
@@ -258,8 +257,7 @@ return false
 	local encryptionRule = tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))..tostring(math.random(0,9))
 	local encryptedPW = string.lower(md5(string.lower(md5(password))..encryptionRule))
 	local ipAddress = getPlayerIP(client)
-	local romciavatar = "avatars/user.png"
-	preparedQuery3 = "INSERT INTO `accounts` SET `username`='"..toSQL(username).."', `password`='"..toSQL(encryptedPW).."', `avatar`='"..toSQL(romciavatar).."', `email`='"..toSQL(email).."', `registerdate`=NOW(), `ip`='"..toSQL(ipAddress).."', `salt`='"..toSQL(encryptionRule).."', `mtaserial`='"..mtaSerial.."', `activated`='1' "
+	preparedQuery3 = "INSERT INTO `accounts` SET `username`='"..toSQL(username).."', `password`='"..toSQL(encryptedPW).."' , `email`='"..toSQL(email).."', `registerdate`=NOW(), `ip`='"..toSQL(ipAddress).."', `salt`='"..toSQL(encryptionRule).."', `mtaserial`='"..mtaSerial.."', `activated`='1' "
 	local id = mysql:query_insert_free(preparedQuery3)
 	if id and tonumber(id) then
 		triggerClientEvent(client,"accounts:register:complete",client, username, password)
